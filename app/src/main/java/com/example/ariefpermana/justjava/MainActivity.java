@@ -1,8 +1,12 @@
 package com.example.ariefpermana.justjava;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -11,6 +15,7 @@ import java.text.NumberFormat;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
+    int quantity = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,17 +27,41 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void increment(View view) {
-        int quantity = 2;
-        quantity = 3;
-        display(quantity);
+
+        quantity = quantity + 1;
+        TextView viewQuantity = (TextView) findViewById(R.id.quantity_text_view);
+        int intquantity = Integer.parseInt(String.valueOf(viewQuantity));
+
+        //https://stackoverflow.com/questions/27230664/how-can-i-set-alert-dialogs-into-if-and-else-statement
+        if(quantity == 10){
+        Button btnAlert = (Button) findViewById(R.id.button_plus);
+
+        btnAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(
+                        MainActivity.this);
+                builder.setTitle("Contoh Alert");
+                builder.setMessage("Alert dengan 1 Action Button ");
+                builder.setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+                                Log.e("info", "OK");
+                            }
+                        });
+                builder.show();
+            }
+        });
+        //}else{
+            display(quantity);
+        //}
     }
     public void decrement(View view) {
-        int quantity = 2;
-        quantity = 1;
+        quantity = quantity - 1;
         display(quantity);
     }
     public void submitOrder(View view) {
-        int quantity = 3;
         display(quantity);
         displayPrice(quantity * 5);
     }
