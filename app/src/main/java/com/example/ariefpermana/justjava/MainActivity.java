@@ -29,31 +29,31 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
 
         quantity = quantity + 1;
-        TextView viewQuantity = (TextView) findViewById(R.id.quantity_text_view);
-        int intquantity = Integer.parseInt(String.valueOf(viewQuantity));
-
-        //https://stackoverflow.com/questions/27230664/how-can-i-set-alert-dialogs-into-if-and-else-statement
-        if(quantity == 10){
-        Button btnAlert = (Button) findViewById(R.id.button_plus);
-
-        btnAlert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(
-                        MainActivity.this);
-                builder.setTitle("Contoh Alert");
-                builder.setMessage("Alert dengan 1 Action Button ");
-                builder.setPositiveButton("OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                Log.e("info", "OK");
-                            }
-                        });
-                builder.show();
-            }
-        });
-        //}else{
+        //  TextView viewQuantity = (TextView) findViewById(R.id.quantity_text_view);
+//        int intquantity = Integer.parseInt(String.valueOf(viewQuantity));
+//
+//        //https://stackoverflow.com/questions/27230664/how-can-i-set-alert-dialogs-into-if-and-else-statement
+//        if(quantity == 10){
+//        Button btnAlert = (Button) findViewById(R.id.button_plus);
+//
+//        btnAlert.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(
+//                        MainActivity.this);
+//                builder.setTitle("Contoh Alert");
+//                builder.setMessage("Alert dengan 1 Action Button ");
+//                builder.setPositiveButton("OK",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog,
+//                                                int which) {
+//                                Log.e("info", "OK");
+//                            }
+//                        });
+//                builder.show();
+//            }
+//        });
+//        }else{
             display(quantity);
         //}
     }
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         display(quantity);
     }
     public void submitOrder(View view) {
-        display(quantity);
+
         displayPrice(quantity * 5);
     }
 
